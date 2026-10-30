@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup</title>
+<link rel="icon" type="image/png" href="/media/logo.png">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+height:100vh;
+background:black;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+}
+/* NAVBAR */
+.navbar{
+width:100%;
+background:rgba(0,0,0,0.9);
+backdrop-filter: blur(10px);
+border-bottom:1px solid #00ff88;
+padding:15px 40px;
+position:fixed;
+top:0;
+z-index:1000;
+}
+
+.nav-container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+color:#00ff88;
+font-size:24px;
+font-weight:bold;
+}
+
+.nav-right{
+display:flex;
+gap:20px;
+}
+
+.logout-btn{
+background:#00ff88;
+color:black;
+padding:6px 16px;
+border-radius:20px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.logout-btn:hover{
+background:#00cc6a;
+}
+
+
+
+.sign{
+width:400px;
+padding:40px;
+text-align:center;
+
+background: rgba(255,255,255,0.1);
+backdrop-filter: blur(10px);
+
+border-radius:15px;
+border:1px solid rgba(255,255,255,0.3);
+
+box-shadow:0 0 25px rgba(255,255,255,0.2);
+}
+
+.sign h2{
+margin-bottom:25px;
+}
+
+.sign input{
+width:90%;
+padding:12px;
+margin:12px 0;
+
+border:none;
+outline:none;
+
+border-radius:25px;
+
+background:rgba(255,255,255,0.2);
+color:white;
+}
+
+.sign input::placeholder{
+color:#ddd;
+}
+
+
+.sign button{
+margin-top:20px;
+
+padding:12px 35px;
+
+border:none;
+border-radius:25px;
+
+background:#00ff88;
+color:black;
+
+font-weight:bold;
+cursor:pointer;
+
+transition:0.3s;
+}
+
+.sign button:hover{
+transform:scale(1.1);
+background:#00cc6a;
+}
+
+.error{
+color:red;
+margin-top:10px;
+}
+
+h2{
+    font-size:45px;
+margin:40px 0;
+color:#00ff88;
+}
+
+.footer{
+margin-top:60px;
+padding:20px;
+text-align:center;
+border-top:1px solid #00ff88;
+color:#aaa;
+}
+</style>
+</head>
+
+<body>
+    <nav class="navbar">
+<div class="nav-container">
+
+<div class="logo">
+<a href="{% url 'dashboard' %}" style="color:#00ff88;text-decoration:none;">P MAX</a>
+</div>
+
+<div class="nav-right">
+<a href="{% url 'login' %}" class="logout-btn">login</a>
+</div>
+
+</div>
+</nav>
+
+<form class="sign" method="post">
+{% csrf_token %}
+
+<h2>Signup</h2>
+
+{% if error %}
+<p class="error">{{error}}</p>
+{% endif %}
+
+<input type="text" placeholder="Enter Username" name="username" required>
+
+<input type="email" placeholder="Enter Email" name="email" required>
+
+<input type="password" placeholder="Enter Password" name="password" required>
+
+<button type="submit">Signup</button>
+
+</form>
+
+<!-- FOOTER -->
+<div class="footer">
+<p>P MAX | Movie Booking Platform</p>
+</div>
+
+
+</body>
+</html>
